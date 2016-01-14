@@ -11,8 +11,8 @@ import edu.wpi.first.wpilibj.AnalogInput;
 public class RobotMap {
 	public static AnalogInput lightSensor;
 	public static double lightValue;
-	
-	lightSensor = new AnalogInput();
+
+	lightSensor = new AnalogInput(2, 3, 7);
     // For example to map the left and right motors, you could define the
     // following variables to use with your drivetrain subsystem.
     // public static int leftMotor = 1;

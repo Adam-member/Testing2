@@ -17,7 +17,7 @@ import org.usfirst.frc.team2557.robot.subsystems.LightUpdate;
  * creating this project, you must also update the manifest file in the resource
  * directory.
  */
-public class Robot extends IterativeRobot {
+public abstract class Robot extends Command {
 
 	public static final ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
 	public static OI oi;
@@ -26,16 +26,14 @@ public class Robot extends IterativeRobot {
 
     Command autonomousCommand;
     Command GetLight;
-    Command LightUpdateDash;
+    Command LightUpdateDash = null;
 
     /**
      * This function is run when the robot is first started up and should be
      * used for any initialization code.
      */
     public void robotInit() {
-		oi = new OI();
-		lightSensor = new LightSensor();
-		lightUpdate = new LightUpdate();
+
         // instantiate the command used for the autonomous period
         autonomousCommand = new ExampleCommand();
     }
@@ -54,6 +52,8 @@ public class Robot extends IterativeRobot {
      */
     public void autonomousPeriodic() {
         Scheduler.getInstance().run();
+        //GetLight.start();
+        LightUpdateDash.start();
     }
 
     public void teleopInit() {
@@ -77,8 +77,7 @@ public class Robot extends IterativeRobot {
      */
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
-        GetLight.start();
-        LightUpdateDash.start();
+
     }
     
     /**
